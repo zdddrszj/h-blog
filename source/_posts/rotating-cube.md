@@ -1,6 +1,6 @@
 ---
 title: 3D 旋转立方体
-date: 2017-12-18 17:51:41
+date: 2017-06-18 12:47:41
 categories: [前端]
 tags: [CSS3, animation]
 ---
@@ -153,9 +153,3 @@ div{
 <g-emoji alias="smile" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f604.png" ios-version="6.0">😄</g-emoji><g-emoji alias="smile" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f604.png" ios-version="6.0">😄</g-emoji><g-emoji alias="smile" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f604.png" ios-version="6.0">😄</g-emoji>  好了，到这里就完工啦！！！
 
 [查看demo](http://yixunfe.github.io/blog/demo/36/demo.html)
-
-<br/>
-### **Thanks**
-
-<br/>
-<div class="copyright">版权声明：版权归作者所有，任何形式转载请联系博主。</div>

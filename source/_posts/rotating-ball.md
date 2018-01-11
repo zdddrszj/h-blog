@@ -1,11 +1,11 @@
 ---
 title: 3D 旋转心
-date: 2017-12-18 17:15:43
+date: 2017-07-06 11:05:12
 categories: [前端]
 tags: [CSS3, animation]
 ---
 
-亲爱的小伙伴，新年将至，今天在这里 `用 css3 实现 3D 旋转心` 作为新年礼物送给大家。
+亲爱的小伙伴，今天在这里 `用 css3 实现 3D 旋转心` 作为小礼物送给大家。
 
 制作之前首先要学习一下 `border-radius` 基础知识，因为今天的这个心就是她的杰作。大家可以参考 [CSS | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius) 技术文档。
 ### 实现方法
@@ -113,9 +113,3 @@ tags: [CSS3, animation]
 <p><img class="emoji" alt=":bowtie:" src="https://assets-cdn.github.com/images/icons/emoji/bowtie.png" height="20" width="20" /><img class="emoji" alt=":bowtie:" src="https://assets-cdn.github.com/images/icons/emoji/bowtie.png" height="20" width="20"><img class="emoji" alt=":bowtie:" src="https://assets-cdn.github.com/images/icons/emoji/bowtie.png" height="20" width="20">  好了，到这里就完工啦！！！</p>
 
 [查看demo](http://yixunfe.github.io/blog/demo/43/demo.html)
-
-<br/>
-### **Thanks**
-
-<br/>
-<div class="copyright">版权声明：版权归作者所有，任何形式转载请联系博主。</div>

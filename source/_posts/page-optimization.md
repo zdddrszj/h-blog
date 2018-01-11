@@ -1,6 +1,6 @@
 ---
 title: 移动端 H5 页面优化（一）
-date: 2017-12-18 15:40:55
+date: 2017-08-18 13:40:55
 categories: [前端]
 tags: [html5, performance] 
 ---
@@ -115,9 +115,3 @@ isScrollFun();
 在 `Hybrid App` 开发中，若下拉刷新是原生的，那么当用户下拉刷新时：
 对于 `Android` ：会触发 `touchstart` 、`touchcancle`
 对于 `IOS` ：会触发 `touchstart` 、`touchmove` 、`touchend` 
-
-<br/>
-## **Thanks**
-
-<br/>
-<div class="copyright">版权声明：版权归作者所有，任何形式转载请联系博主。</div>

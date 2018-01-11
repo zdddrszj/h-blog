@@ -29,6 +29,9 @@ mixin make_post(item, is_detail)
 
 		if is_detail
 			.post-content!= item.content
+			br
+			h4='Thanks'
+			.copyright= '版权声明：版权归作者所有，任何形式转载请联系博主。'
 		else
 			.post-content
 				- var summary = item.summary || item.content

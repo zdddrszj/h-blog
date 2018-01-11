@@ -70,3 +70,19 @@ if theme.valine.enable == true
         path: window.location.pathname,
         avatar:'#{theme.valine.avatar}'
       })
+
+if theme.gitment.enable == true
+    a#comments
+    #vcomments(style="margin:0 30px;")
+    script(src='https://imsun.github.io/gitment/dist/gitment.browser.js')
+    script.
+        const gitment = new Gitment({
+            id: location.href,
+            owner: 'zdddrszj',
+            repo: 'h-blog',
+            oauth: {
+                client_id: 'fa0612e95df36a1b5754',
+                client_secret: '27e682fd9c45ef2379461c346d3b23d5a1db057f',
+            }
+        })
+        gitment.render('comments')

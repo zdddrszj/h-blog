@@ -1,9 +1,10 @@
 ---
 title: DOM 中的范围 
-date: 2017-12-10 14:48:15
+date: 2017-05-24 12:18:10
 categories: [前端]
 tags: [range]
 ---
+
 <!-- toc -->
 为了让开发人员更方便控制页面，`DOM2` 级遍历和范围模块定义了 **范围 （range）** 接口。通过范围可以选择文档中的一个区域，而不必考虑节点的界限（选择在后台完成，对用户是不可见的）。 `Firefox`、`Opera`、`Safari` 和 `Chrome` 都支持 `DOM` 范围。IE 以专有方式实现了自己的范围特性。
 # DOM 中的范围
@@ -413,8 +414,3 @@ var newRange = range.duplicate();
 <g-emoji alias="yum" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f60b.png" ios-version="6.0">😋</g-emoji><g-emoji alias="yum" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f60b.png" ios-version="6.0">😋</g-emoji><g-emoji alias="yum" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f60b.png" ios-version="6.0">😋</g-emoji> 好了，基本知识就是这些，在这里和大家说拜拜啦~
 
 [查看demo](http://yixunfe.github.io/blog/demo/37/demo.html)
-<br/>
-**Thanks**
-
-<br/>
-<div class="copyright">版权声明：版权归作者所有，任何形式转载请联系博主。</div>

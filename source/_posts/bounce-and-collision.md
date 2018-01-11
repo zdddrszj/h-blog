@@ -1,6 +1,6 @@
 ---
 title: Canvas 多球碰撞和反弹
-date: 2017-12-27 14:21:44
+date: 2017-09-27 14:01:14
 categories: [前端]
 tags: [html5, canvas] 
 ---
@@ -184,9 +184,3 @@ function updateBall(ball){
 [查看demo](http://yixunfe.github.io/blog/demo/57/demo1.html)
 
 <g-emoji alias="yum" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f60b.png" ios-version="6.0">😋</g-emoji><g-emoji alias="yum" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f60b.png" ios-version="6.0">😋</g-emoji><g-emoji alias="yum" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f60b.png" ios-version="6.0">😋</g-emoji>  好了，今天就到这里吧~
-
-<br/>
-**Thanks**
-
-<br/>
-<div class="copyright">版权声明：版权归作者所有，任何形式转载请联系博主。</div>
