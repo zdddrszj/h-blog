@@ -2,24 +2,24 @@
   .nav
     li
       if is_home()
-        a.current(href="/")= __('Home')					
+        a.current(href="/h-blog")= __('Home')					
       else
-        a(href="/")= __('Home')	
+        a(href="/h-blog")= __('Home')	
     li
       if is_archive()
-        a.current(href="/archives")= __('Archive')
+        a.current(href="/h-blog/archives")= __('Archive')
       else
-        a(href="/archives")= __('Archive')
+        a(href="/h-blog/archives")= __('Archive')
     li
       if is_current('tagsCloud')
-        a.current(href="/tagsCloud")= __('TagsCloud')					
+        a.current(href="/h-blog/tagsCloud")= __('TagsCloud')					
       else
-        a(href="/tagsCloud")= __('TagsCloud')
+        a(href="/h-blog/tagsCloud")= __('TagsCloud')
     li
       if is_current('about')
-        a.current(href="/about")= __('About')     
+        a.current(href="/h-blog/about")= __('About')     
       else
-        a(href="/about")= __('About')
+        a(href="/h-blog/about")= __('About')
   .information
     .back_btn
       li
