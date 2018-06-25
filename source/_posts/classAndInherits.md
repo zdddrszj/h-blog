@@ -1,5 +1,5 @@
 ---
-title: ES6中类的实现及继承原理
+title: Babel一下ES6中的类及继承
 date: 2018-06-19 13:41:16
 categories: [前端]
 tags: [es6, class]
@@ -136,7 +136,7 @@ let Father = function () {
     //   hobby: 'basketball'
     // }
   }
-	// 下面是实现类，即把公有方法绑定到Father的prototype上，静态方法直接放到Father上
+  // 下面是实现类，即把公有方法绑定到Father的prototype上，静态方法直接放到Father上
   _createClass(Father,[
     {
       key: 'eat',
@@ -181,7 +181,7 @@ let Child = function (Father) {
   // 修改原型链：将Child的原型链指向所从属的原型上，即Child.__proto__ = Father
   _inherits(Child, Father)
 
-  function Child() {
+  function Child () {
     // 类调用检查
     _classCallCheck(this, Child)
     // 继承私有属性
