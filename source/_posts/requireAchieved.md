@@ -1,5 +1,5 @@
 ---
-title: 实现CommonJs规范中的Require模块
+title: 实现 CommonJs 规范中的 Require 模块
 date: 2018-06-25 13:22:26
 categories: [前端]
 tags: [require]

@@ -1,5 +1,5 @@
 ---
-title: Babel一下ES6中的类及继承
+title: Babel 一下 ES6 中的类及继承
 date: 2018-06-19 13:41:16
 categories: [前端]
 tags: [es6, class]
