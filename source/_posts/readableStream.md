@@ -10,26 +10,16 @@ tags: [ReadableStream]
 > 众所周知，`node` 中的 `fs` 模块功能大都与文件相关，比如可以通过 `fs.createReadStream` 创建文件可读流，通过`fs.createWriteStream` 创建文件可写流，还可以通过监听 `open`、`data`、`end`、`error`、`readable` 事件对数据进行操作。由于时间有限，今天我们先来实现一下 `readable` 事件功能。
 
 开始之前，先简单介绍一下可读流函数 `fs.createReadStream(path[, options])` 中各参数所代表的含义，如下所示：
-- 创建可读流的路径
-`path <string> | <Buffer> | <URL>`
-- 可选参数
-`options <string> | <Object>`
-  - 文件读写标识，默认为 r
-  `flags <string>`
-  - 读取编码格式，默认为 null
-  encoding <string>
-  - 文件描述符，默认为 null
-  `fd <integer>`
-  - 文件操作权限，默认为 0o666
-  `mode <integer>`
-  - 文件是否自动关闭，默认为 true
-  `autoClose <boolean>`
-  - 文件读取开始位置，默认为 0
-  `start <integer>`
-  - 文件读取结束位置，默认为 Infinity
-  `end <integer>`
-  - 水位线，每次读取长度，默认为 64字节（64 * 1024）
-  `highWaterMark <integer>`
+- `path <string> | <Buffer> | <URL>` 创建可读流的路径
+- `options <string> | <Object>` 可选参数
+  - `flags <string>` 文件读写标识，默认为 r
+  - `encoding <string>` 读取编码格式，默认为 null
+  - `fd <integer>` 文件描述符，默认为 null
+  - `mode <integer>` 文件操作权限，默认为 0o666
+  - `autoClose <boolean>` 文件是否自动关闭，默认为 true
+  - `start <integer>` 文件读取开始位置，默认为 0
+  - `end <integer>` 文件读取结束位置，默认为 Infinity
+  - `highWaterMark <integer>` 水位线，每次读取长度，默认为 64字节（64 * 1024）
 
 ## 一、创建可读流
 首先我们需要实现一个可读流的类，不防定义为 `ReadableStream`，该类可以通过 `on` 函数进行事件监听，所以需要继承 `node` 中 `EventEmitter` 类；
@@ -92,7 +82,7 @@ open() {
   })
 }
 // 关闭可读流，参数为文件描述符
-destory(fd) {
+destory() {
   if (typeof this.fd === 'number') {
     fs.close(this.fd, () => {
       this.emit('close')
@@ -101,7 +91,10 @@ destory(fd) {
   this.emit('close')
 }
 ```
-接下来看下初次读取时的 `read` 函数。实现代码如下：
+接下来看下初次读取时的 `read` 函数。
+> 实现思路：在构造函数中，当触发第一次读取文件时，读取大小为 `highWaterMark` 个，不防我们将比较读取长度和缓存长度的方法设定为 `read`。然后再 `read` 函数中判断，如果缓存区长度为 `0` 时，表明可以触发 `readable` 事件；如果缓存区长度小于水位线时，则进行文件读取，此时我们将真正读取文件的函数命名为 `_read`；最后，根据编码格式进行返回数据。
+
+实现代码如下：
 ```javascript
 class ReadableStream extends EventEmitter {
 
@@ -195,10 +188,7 @@ rs.on('readable', () => {
   console.log(r)
 })
 ```
-由此可知，如果缓冲区内容够读，则返回结果结束读取。
-> 实现思路：在构造函数中，当触发第一次读取文件时，读取大小为 `highWaterMark` 个，不防我们将比较读取长度和缓存长度的方法设定为 `read`。然后再 `read` 函数中判断，如果缓存区长度为 `0` 时，表明可以触发 `readable` 事件；如果缓存区长度小于水位线时，则进行文件读取，此时我们将真正读取文件的函数命名为 `_read`；最后，根据编码格式进行返回数据。
-
-实现代码如下：
+由此可知，如果缓冲区内容够读，则返回结果结束读取。实现代码如下：
 ```javascript
 class ReadableStream extends EventEmitter {
 
@@ -211,7 +201,7 @@ class ReadableStream extends EventEmitter {
       n = this.highWaterMark
     }
 
-    // 如果this.read(2) highWaterMark=3 
+    // 如果读取长度小于缓存区长度，this.read(2) highWaterMark=3
     if (n > 0 && n <= this.len) {
       buffer = Buffer.alloc(n)
       let current
@@ -233,7 +223,7 @@ class ReadableStream extends EventEmitter {
       }
     }
 
-    // 由于读取长度小于缓存区长度，固此时不会继续调用实例上的read方法
+    // 如果缓存区长度为0时，表明可以触发readable事件
     if (this.len === 0) {
       this.emitReadable = true
     }

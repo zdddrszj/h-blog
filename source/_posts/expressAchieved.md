@@ -5,9 +5,9 @@ categories: [前端]
 tags: [express]
 ---
 <!-- toc -->
-
-## 一、实现express启动服务
-- 原生 `express` 启动服务
+今天我们利用 `node` 中的 `http` 模块实现一个 `express` 框架。关于 `http` 模块的使用大家可自行查阅[相关文档](http://nodejs.cn/api/http.html)。
+## 一、实现 express 启动服务
+原生 `express` 启动服务
 ```javascript
 let express = require('express')
 let app = express()
@@ -15,7 +15,7 @@ let server = app.listen(3000, 'localhost', function () {
 	console.log(`app is listening at http://${server.address().address}:${server.address().port}`)
 })
 ```
-- 若实现如上功能，首先我们确定的是 `express` 是一个函数，执行后返回一个 `app` 函数，且有 `listen` 方法，我们不如称这个 `app` 函数为监听函数。实现代码如下：
+若实现如上功能，首先我们确定的是 `express` 是一个函数，执行后返回一个 `app` 函数，且有 `listen` 方法，我们不如称这个 `app` 函数为监听函数。实现代码如下：
 ```javascript
 let http = require('http')
 function createApplication () {
@@ -34,8 +34,8 @@ function createApplication () {
 module.exports = createApplication
 ```
 
-## 二、实现express路由
-- 原生 `express` 使用路由
+## 二、实现 express 路由
+原生 `express` 使用路由
 ```javascript
 let express = require('express')
 let app = express()
@@ -46,7 +46,7 @@ app.listen(3000, 'localhost', function () {
   console.log('app is listening')
 })
 ```
-- 若实现如上功能，我们的 `app` 监听函数需要实现一个 `get` 方法，该方法可以把本次调用存储在 `app` 的路由数组中，当服务启动成功后，监听到匹配的路由时即可调用对应的回调。实现代码如下：
+若实现如上功能，我们的 `app` 监听函数需要实现一个 `get` 方法，该方法可以把本次调用存储在 `app` 的路由数组中，当服务启动成功后，监听到匹配的路由时即可调用对应的回调。实现代码如下：
 ```javascript
 let http = require('http')
 function createApplication () {
@@ -79,7 +79,7 @@ function createApplication () {
 }
 module.exports = createApplication
 ```
-- 其他 `RESTFUL` 方法同理。实现代码如下：
+其他 `RESTFUL` 方法同理。实现代码如下：
 ```javascript
 let http = require('http')
 function createApplication () {
@@ -126,8 +126,8 @@ function createApplication () {
 module.exports = createApplication
 ```
 
-## 三、实现express中间件
-- 原生 `express` 使用中间件
+## 三、实现 express 中间件
+原生 `express` 使用中间件
 ```javascript
 let express = require('express')
 let app = express()
@@ -145,7 +145,7 @@ app.listen(3000, 'localhost', function () {
   console.log('app is listening')
 })
 ```
-- 由此可见，`use` 方法和 `method` 方法大同小异，重点是实现 `next` 方法。
+由此可见，`use` 方法和 `method` 方法大同小异，重点是实现 `next` 方法。
 `next` 函数的作用即是在请求到达前更改一些上下文环境，比如修改返回字符集编码等，且按顺序执行，固可用迭代的方式实现。实现代码如下：
 ```javascript
 let http = require('http')
@@ -206,7 +206,7 @@ function createApplication () {
 }
 module.exports = createApplication
 ```
-- 此时，`express` 的主要功能已经实现，下面来看下如果执行错误通过 `next` 函数参数进行返回的情况。
+此时，`express` 的主要功能已经实现，下面来看下如果执行错误通过 `next` 函数参数进行返回的情况。
 如果 `next` 函数有参数，会跳过接下来的所有中间件和路由，直接返回错误参数消息，所以在处理中间件之前要先判断错误情况，并且将错误继续向下传递，只有匹配到有四个参数的回调时才执行。实现代码如下：
 ```javascript
 let http = require('http')
