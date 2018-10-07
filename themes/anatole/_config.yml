@@ -26,5 +26,11 @@ valine:
   avatar: mm # avatar style https://github.com/xCss/Valine/wiki/avatar-setting-for-valine
   placeholder: Just go go # comment box placeholder
 
+# Gitment
+# Introduction: https://github.com/imsun/gitment#options
 gitment:
-  enable: true
+  enable: false
+  githubID: 'zdddrszj'
+  repo: 'h-blog'
+  ClientID: '39b468cc06e607384e13'
+  ClientSecret: '001bac7abbc39a780c9af40d9f47c2feb09724c6'
